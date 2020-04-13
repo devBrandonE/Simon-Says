@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A253B2372444D86B00D4AE2D /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A253B2362444D86B00D4AE2D /* SecondViewController.swift */; };
+		A253B2392444F81900D4AE2D /* gameboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = A253B2382444F81900D4AE2D /* gameboard.swift */; };
 		A2C38221243B9AFE00A57FF6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2C38220243B9AFE00A57FF6 /* AppDelegate.swift */; };
 		A2C38223243B9AFE00A57FF6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2C38222243B9AFE00A57FF6 /* SceneDelegate.swift */; };
 		A2C38225243B9AFE00A57FF6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2C38224243B9AFE00A57FF6 /* ViewController.swift */; };
@@ -16,6 +18,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A253B2362444D86B00D4AE2D /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		A253B2382444F81900D4AE2D /* gameboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = gameboard.swift; sourceTree = "<group>"; };
 		A2C3821D243B9AFE00A57FF6 /* Simon Says.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Simon Says.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2C38220243B9AFE00A57FF6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A2C38222243B9AFE00A57FF6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -59,6 +63,8 @@
 				A2C38220243B9AFE00A57FF6 /* AppDelegate.swift */,
 				A2C38222243B9AFE00A57FF6 /* SceneDelegate.swift */,
 				A2C38224243B9AFE00A57FF6 /* ViewController.swift */,
+				A253B2362444D86B00D4AE2D /* SecondViewController.swift */,
+				A253B2382444F81900D4AE2D /* gameboard.swift */,
 				A2C38226243B9AFE00A57FF6 /* Main.storyboard */,
 				A2C38229243B9B0400A57FF6 /* Assets.xcassets */,
 				A2C3822B243B9B0400A57FF6 /* LaunchScreen.storyboard */,
@@ -138,6 +144,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A253B2372444D86B00D4AE2D /* SecondViewController.swift in Sources */,
+				A253B2392444F81900D4AE2D /* gameboard.swift in Sources */,
 				A2C38225243B9AFE00A57FF6 /* ViewController.swift in Sources */,
 				A2C38221243B9AFE00A57FF6 /* AppDelegate.swift in Sources */,
 				A2C38223243B9AFE00A57FF6 /* SceneDelegate.swift in Sources */,

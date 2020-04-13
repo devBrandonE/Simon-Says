@@ -16,7 +16,7 @@ class ViewController: UIViewController {
     }
 
     @IBAction func Start(_ sender: Any) {
-        performSegue(withIdentifier: "firstToSecond", sender: self)
+        performSegue(withIdentifier: "Start", sender: self)
     }
     
 }
