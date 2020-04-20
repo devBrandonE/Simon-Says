@@ -15,6 +15,8 @@ class SecondViewController: UIViewController {
     @IBOutlet weak var tapGreen: UIView!
     @IBOutlet weak var tapBlue: UIView!
     var guess = String()
+    var timer = Timer()
+    var second = 0
     var answers = [String]()
     var highscore = 0
 
@@ -23,6 +25,7 @@ class SecondViewController: UIViewController {
         randomizePattern()
         randomizePattern()
         randomizePattern()
+        tellPattern()
     }
     
     func randomizePattern() {
@@ -43,7 +46,57 @@ class SecondViewController: UIViewController {
     }
     
     func tellPattern() {
-        // Show the pattern to the player
+        for i in answers {
+            if second == 0 {
+                timer = Timer.scheduledTimer(withTimeInterval: 0, repeats: false, block: { (_) in
+                    print(i)
+                })
+                second += 1
+            }
+            if i == "Red"{
+                timer = Timer.scheduledTimer(withTimeInterval: TimeInterval(second), repeats: false, block: { (_) in
+                    print(i)
+                    self.tapRed.backgroundColor = .red
+                })
+                print("1")
+                second += 1
+                timer = Timer.scheduledTimer(withTimeInterval: TimeInterval(second), repeats: false, block: { (_) in
+                    print(i)
+                    self.tapRed.backgroundColor = UIColor.init(red: 128 / 255, green: 0 / 255, blue: 0 / 255, alpha: 1)
+                })
+            } else if i == "Yellow"{
+                timer = Timer.scheduledTimer(withTimeInterval: TimeInterval(second), repeats: false, block: { (_) in
+                    print(i)
+                    self.tapYellow.backgroundColor = .yellow
+                })
+                print("2")
+                second += 1
+                timer = Timer.scheduledTimer(withTimeInterval: TimeInterval(second), repeats: false, block: { (_) in
+                    self.tapYellow.backgroundColor = UIColor.init(red: 128 / 255, green: 128 / 255, blue: 0 / 255, alpha: 1)
+                })
+            } else if i == "Green"{
+                timer = Timer.scheduledTimer(withTimeInterval: TimeInterval(second), repeats: false, block: { (_) in
+                    print(i)
+                    self.tapGreen.backgroundColor = .green
+                })
+                print("3")
+                second += 1
+                timer = Timer.scheduledTimer(withTimeInterval: TimeInterval(second), repeats: false, block: { (_) in
+                    self.tapGreen.backgroundColor = UIColor.init(red: 0 / 255, green: 128 / 255, blue: 0 / 255, alpha: 1)
+                })
+            } else if i == "Blue"{
+                timer = Timer.scheduledTimer(withTimeInterval: TimeInterval(second), repeats: false, block: { (_) in
+                    print(i)
+                    self.tapBlue.backgroundColor = .blue
+                })
+                print("4")
+                second += 1
+                timer = Timer.scheduledTimer(withTimeInterval: TimeInterval(second), repeats: false, block: { (_) in
+                    self.tapBlue.backgroundColor = UIColor.init(red: 0 / 255, green: 0 / 255, blue: 128 / 255, alpha: 1)
+                })
+            }
+            second += 1
+        }
     }
     
     func gameOver() {

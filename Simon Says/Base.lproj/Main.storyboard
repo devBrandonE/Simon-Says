@@ -31,7 +31,7 @@
                                 <state key="normal" title="Play"/>
                                 <connections>
                                     <action selector="Start:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4UQ-71-URQ"/>
-                                    <segue destination="eoQ-jh-VOe" kind="show" identifier="Start" id="qLl-aA-Prb"/>
+                                    <segue destination="eoQ-jh-VOe" kind="show" identifier="Start" animates="NO" id="qLl-aA-Prb"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Simon" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dNy-Uf-UNl">
