@@ -17,29 +17,19 @@ class SecondViewController: UIViewController {
     @IBOutlet weak var gameOverLabel: UILabel!
     @IBOutlet weak var results: UILabel!
     @IBOutlet weak var tryAgain: UIButton!
-    var colorsArray = [ViewGrid]()
+    //var colorsArray = [ViewGrid]()
     var yourTurn = false
-    var gameGoing = true
-    var guess = String()
+    var gameEnd = false
     var timer = Timer()
     var second = 0
     var answers = [String]()
+    var placement = 0
+    var guess = true
     var highscore = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        colorsArray.append(tapRed)
-        colorsArray.append(tapYellow)
-        colorsArray.append(tapGreen)
-        colorsArray.append(tapBlue)
         randomizePattern()
-        randomizePattern()
-        randomizePattern()
-        randomizePattern()
-        randomizePattern()
-        randomizePattern()
-        randomizePattern()
-        tellPattern()
     }
     
     func randomizePattern() {
@@ -55,8 +45,8 @@ class SecondViewController: UIViewController {
         } else {
             nextColor += "Blue"
         }
-        
         answers += [nextColor]
+        tellPattern()
     }
     
     func tellPattern() {
@@ -80,6 +70,7 @@ class SecondViewController: UIViewController {
                     self.tapRed.backgroundColor = UIColor.init(red: 128 / 255, green: 0 / 255, blue: 0 / 255, alpha: 1)
                     if count == self.answers.count {
                         self.yourTurn = true
+                        self.second = 0
                     }
                     count += 1
                 })
@@ -94,6 +85,7 @@ class SecondViewController: UIViewController {
                     self.tapYellow.backgroundColor = UIColor.init(red: 128 / 255, green: 128 / 255, blue: 0 / 255, alpha: 1)
                     if count == self.answers.count {
                         self.yourTurn = true
+                        self.second = 0
                     }
                     count += 1
                 })
@@ -108,6 +100,7 @@ class SecondViewController: UIViewController {
                     self.tapGreen.backgroundColor = UIColor.init(red: 0 / 255, green: 128 / 255, blue: 0 / 255, alpha: 1)
                     if count == self.answers.count {
                         self.yourTurn = true
+                        self.second = 0
                     }
                     count += 1
                 })
@@ -122,6 +115,7 @@ class SecondViewController: UIViewController {
                     self.tapBlue.backgroundColor = UIColor.init(red: 0 / 255, green: 0 / 255, blue: 128 / 255, alpha: 1)
                     if count == self.answers.count {
                         self.yourTurn = true
+                        self.second = 0
                     }
                     count += 1
                 })
@@ -132,25 +126,93 @@ class SecondViewController: UIViewController {
     
     @IBAction func tapOnRed(sender: UITapGestureRecognizer) {
         if yourTurn {
+            yourTurn = false
             print("Red")
+            tapRed.backgroundColor = .red
+            if "Red" == answers[placement] {
+                print("Correct")
+                guess = true
+            }
+            else {
+                print("Incorrect")
+                guess = false
+            }
+            placement += 1
+            timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(checkAnswer), userInfo: nil, repeats: false)
         }
     }
     
     @IBAction func tapOnYellow(sender: UITapGestureRecognizer) {
         if yourTurn {
+            yourTurn = false
             print("Yellow")
+            tapYellow.backgroundColor = .yellow
+            if "Yellow" == answers[placement] {
+                print("Correct")
+                guess = true
+            }
+            else {
+                print("Incorrect")
+                guess = false
+            }
+            placement += 1
+            timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(checkAnswer), userInfo: nil, repeats: false)
         }
     }
     
     @IBAction func tapOnGreen(sender: UITapGestureRecognizer) {
         if yourTurn {
+            yourTurn = false
             print("Green")
+            tapGreen.backgroundColor = .green
+            if "Green" == answers[placement] {
+                print("Correct")
+                guess = true
+            }
+            else {
+                print("Incorrect")
+                guess = false
+            }
+            placement += 1
+            timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(checkAnswer), userInfo: nil, repeats: false)
         }
     }
     
     @IBAction func tapOnBlue(sender: UITapGestureRecognizer) {
         if yourTurn {
+            yourTurn = false
             print("Blue")
+            tapBlue.backgroundColor = .blue
+            if "Blue" == answers[placement] {
+                print("Correct")
+                guess = true
+            }
+            else {
+                print("Incorrect")
+                guess = false
+            }
+            placement += 1
+            timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(checkAnswer), userInfo: nil, repeats: false)
+        }
+    }
+    
+    @objc func checkAnswer() {
+        if guess {
+            tapRed.backgroundColor = UIColor.init(red: 128 / 255, green: 0 / 255, blue: 0 / 255, alpha: 1)
+            tapYellow.backgroundColor = UIColor.init(red: 128 / 255, green: 128 / 255, blue: 0 / 255, alpha: 1)
+            tapGreen.backgroundColor = UIColor.init(red: 0 / 255, green: 128 / 255, blue: 0 / 255, alpha: 1)
+            tapBlue.backgroundColor = UIColor.init(red: 0 / 255, green: 0 / 255, blue: 128 / 255, alpha: 1)
+            yourTurn = true
+            if placement >= answers.count {
+                placement = 0
+                highscore += 1
+                randomizePattern()
+            }
+        }
+        else {
+            print("Bruh")
+            gameEnd = true
+            gameOver()
         }
     }
     
@@ -160,8 +222,25 @@ class SecondViewController: UIViewController {
         tapGreen.backgroundColor = .black
         tapBlue.backgroundColor = .black
         gameOverLabel.textColor = .black
-        answers = []
         results.textColor = .black
+        results.text = "Highscore: \(highscore)"
+        tryAgain.backgroundColor = UIColor.black
+    }
+    
+    @IBAction func reset(_ sender: Any) {
+        if gameEnd {
+            gameEnd = false
+            placement = 0
+            tapRed.backgroundColor = UIColor.init(red: 128 / 255, green: 0 / 255, blue: 0 / 255, alpha: 1)
+            tapYellow.backgroundColor = UIColor.init(red: 128 / 255, green: 128 / 255, blue: 0 / 255, alpha: 1)
+            tapGreen.backgroundColor = UIColor.init(red: 0 / 255, green: 128 / 255, blue: 0 / 255, alpha: 1)
+            tapBlue.backgroundColor = UIColor.init(red: 0 / 255, green: 0 / 255, blue: 128 / 255, alpha: 1)
+            answers = []
+            gameOverLabel.textColor = .white
+            results.textColor = .white
+            tryAgain.backgroundColor = UIColor.white
+            randomizePattern()
+        }
     }
     
 }
