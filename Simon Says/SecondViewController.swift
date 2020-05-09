@@ -55,16 +55,14 @@ class SecondViewController: UIViewController {
             yourTurn = false
             if second == 0 {
                 timer = Timer.scheduledTimer(withTimeInterval: 0, repeats: false, block: { (_) in
-                    print("SPACE ----- SPACE")
+                    print("Round \(self.highscore + 1)")
                 })
                 second += 1
             }
             if i == "Red"{
                 timer = Timer.scheduledTimer(withTimeInterval: TimeInterval(second), repeats: false, block: { (_) in
-                    print(i)
                     self.tapRed.backgroundColor = .red
                 })
-                print("1")
                 second += 1
                 timer = Timer.scheduledTimer(withTimeInterval: TimeInterval(second), repeats: false, block: { (_) in
                     self.tapRed.backgroundColor = UIColor.init(red: 128 / 255, green: 0 / 255, blue: 0 / 255, alpha: 1)
@@ -76,10 +74,8 @@ class SecondViewController: UIViewController {
                 })
             } else if i == "Yellow"{
                 timer = Timer.scheduledTimer(withTimeInterval: TimeInterval(second), repeats: false, block: { (_) in
-                    print(i)
                     self.tapYellow.backgroundColor = .yellow
                 })
-                print("2")
                 second += 1
                 timer = Timer.scheduledTimer(withTimeInterval: TimeInterval(second), repeats: false, block: { (_) in
                     self.tapYellow.backgroundColor = UIColor.init(red: 128 / 255, green: 128 / 255, blue: 0 / 255, alpha: 1)
@@ -91,10 +87,8 @@ class SecondViewController: UIViewController {
                 })
             } else if i == "Green"{
                 timer = Timer.scheduledTimer(withTimeInterval: TimeInterval(second), repeats: false, block: { (_) in
-                    print(i)
                     self.tapGreen.backgroundColor = .green
                 })
-                print("3")
                 second += 1
                 timer = Timer.scheduledTimer(withTimeInterval: TimeInterval(second), repeats: false, block: { (_) in
                     self.tapGreen.backgroundColor = UIColor.init(red: 0 / 255, green: 128 / 255, blue: 0 / 255, alpha: 1)
@@ -106,10 +100,8 @@ class SecondViewController: UIViewController {
                 })
             } else if i == "Blue"{
                 timer = Timer.scheduledTimer(withTimeInterval: TimeInterval(second), repeats: false, block: { (_) in
-                    print(i)
                     self.tapBlue.backgroundColor = .blue
                 })
-                print("4")
                 second += 1
                 timer = Timer.scheduledTimer(withTimeInterval: TimeInterval(second), repeats: false, block: { (_) in
                     self.tapBlue.backgroundColor = UIColor.init(red: 0 / 255, green: 0 / 255, blue: 128 / 255, alpha: 1)
@@ -127,14 +119,11 @@ class SecondViewController: UIViewController {
     @IBAction func tapOnRed(sender: UITapGestureRecognizer) {
         if yourTurn {
             yourTurn = false
-            print("Red")
             tapRed.backgroundColor = .red
             if "Red" == answers[placement] {
-                print("Correct")
                 guess = true
             }
             else {
-                print("Incorrect")
                 guess = false
             }
             placement += 1
@@ -145,14 +134,11 @@ class SecondViewController: UIViewController {
     @IBAction func tapOnYellow(sender: UITapGestureRecognizer) {
         if yourTurn {
             yourTurn = false
-            print("Yellow")
             tapYellow.backgroundColor = .yellow
             if "Yellow" == answers[placement] {
-                print("Correct")
                 guess = true
             }
             else {
-                print("Incorrect")
                 guess = false
             }
             placement += 1
@@ -163,14 +149,11 @@ class SecondViewController: UIViewController {
     @IBAction func tapOnGreen(sender: UITapGestureRecognizer) {
         if yourTurn {
             yourTurn = false
-            print("Green")
             tapGreen.backgroundColor = .green
             if "Green" == answers[placement] {
-                print("Correct")
                 guess = true
             }
             else {
-                print("Incorrect")
                 guess = false
             }
             placement += 1
@@ -181,14 +164,11 @@ class SecondViewController: UIViewController {
     @IBAction func tapOnBlue(sender: UITapGestureRecognizer) {
         if yourTurn {
             yourTurn = false
-            print("Blue")
             tapBlue.backgroundColor = .blue
             if "Blue" == answers[placement] {
-                print("Correct")
                 guess = true
             }
             else {
-                print("Incorrect")
                 guess = false
             }
             placement += 1
@@ -210,7 +190,6 @@ class SecondViewController: UIViewController {
             }
         }
         else {
-            print("Bruh")
             gameEnd = true
             gameOver()
         }
